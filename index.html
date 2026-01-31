@@ -7,7 +7,6 @@
     <meta name="theme-color" content="#fff0f3">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="msapplication-navbutton-color" content="#fff0f3">
 
     <title>My Forever Love ❤️</title>
     
@@ -32,20 +31,20 @@
             height: 100%;
         }
 
-        /* Fixed Dashed Border - Always on top */
+        /* Top Bar Color Fix (Address bar visible-a irundhalum idhu merge aagum) */
+        .top-padding {
+            position: fixed; top: 0; width: 100%; height: env(safe-area-inset-top);
+            background: var(--bg-color); z-index: 2000;
+        }
+
+        /* Fixed Dashed Border */
         .page-border {
             position: fixed;
-            top: 15px; left: 15px; right: 15px; bottom: 15px;
+            top: 20px; left: 15px; right: 15px; bottom: 20px;
             border: 3px dashed var(--border-pink);
             border-radius: 30px;
             pointer-events: none;
             z-index: 1000;
-            animation: borderPulse 3s infinite;
-        }
-
-        @keyframes borderPulse {
-            0%, 100% { border-color: var(--border-pink); }
-            50% { border-color: var(--primary); }
         }
 
         #bg-hearts {
@@ -55,85 +54,69 @@
 
         section {
             height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            display: flex; flex-direction: column;
+            justify-content: center; align-items: center;
             scroll-snap-align: start;
-            position: relative;
-            z-index: 10;
+            position: relative; z-index: 10;
             padding: 20px;
         }
 
-        /* Floating Card Style */
+        /* Animated Floating Card */
         .content-box {
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(8px);
-            padding: 30px 20px;
+            padding: 35px 20px;
             border-radius: 30px;
             border: 2px dashed var(--border-pink);
-            max-width: 320px;
+            max-width: 330px;
             width: 90%;
             text-align: center;
             box-shadow: 0 10px 30px rgba(255, 77, 109, 0.1);
             animation: float 4s ease-in-out infinite;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
-        }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-15px); } }
 
+        /* Emoji Animation */
+        .big-emoji { font-size: 5rem; margin-bottom: 20px; display: block; animation: pop 2s infinite; }
+        @keyframes pop { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); } }
+
+        /* Photo Frame (Only for First Page) */
         .photo-frame {
-            width: 200px; height: 250px;
+            width: 210px; height: 260px;
             border: 3px dashed var(--border-pink);
-            padding: 5px; background: white;
+            padding: 6px; background: white;
             border-radius: 15px; margin: 0 auto 15px;
-            overflow: hidden;
             animation: swing 5s ease-in-out infinite;
         }
-
-        @keyframes swing {
-            0%, 100% { transform: rotate(-3deg); }
-            50% { transform: rotate(3deg); }
-        }
-
+        @keyframes swing { 0%, 100% { transform: rotate(-3deg); } 50% { transform: rotate(3deg); } }
         .photo-frame img { width: 100%; height: 100%; object-fit: cover; border-radius: 10px; }
 
-        h1 { font-family: 'Dancing Script', cursive; font-size: 2.8rem; color: var(--primary); margin: 0; }
-        h2 { color: var(--primary); font-size: 1.4rem; margin: 10px 0; }
-        p { font-size: 0.95rem; line-height: 1.5; color: #444; }
+        h1 { font-family: 'Dancing Script', cursive; font-size: 3rem; color: var(--primary); margin: 0; }
+        h2 { color: var(--primary); font-size: 1.5rem; margin: 10px 0; }
+        p { font-size: 1rem; line-height: 1.6; color: #444; font-weight: 500; }
 
-        /* Game Grid */
-        .emoji-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr);
-            gap: 12px; margin-top: 15px;
-        }
-        .emoji-btn {
-            font-size: 1.8rem; background: white; border: 2px dashed var(--border-pink);
-            border-radius: 15px; padding: 10px; cursor: pointer;
-        }
+        .emoji-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 15px; }
+        .emoji-btn { font-size: 2rem; background: white; border: 2px dashed var(--border-pink); border-radius: 15px; padding: 12px; cursor: pointer; }
 
-        .scroll-down {
-            position: absolute; bottom: 40px; font-size: 0.8rem;
-            color: var(--primary); animation: bounce 2s infinite;
-        }
+        .scroll-down { position: absolute; bottom: 50px; font-size: 0.85rem; color: var(--primary); animation: bounce 2s infinite; }
         @keyframes bounce { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-10px);} }
     </style>
 </head>
 <body>
 
+    <div class="top-padding"></div>
     <div class="page-border"></div>
     <div id="bg-hearts"></div>
 
     <section>
         <div class="content-box">
             <p>🎵 Neeyum Naanum Anbe...</p>
-            <h1>My Everything</h1>
+            <h1>For You</h1>
             <div class="photo-frame">
-                <img src="photo1.jpg" alt="Memory 1">
+                <img src="1.jpg" alt="Our Best Moment" onerror="this.src='https://via.placeholder.com/300x400?text=Photo+1.jpg+Missing'">
             </div>
-            <p>Scroll up to see our journey ✨</p>
+            <p>Scroll up to see 30 surprises I kept for you ✨</p>
         </div>
         <div class="scroll-down">Scroll Up ⬇️</div>
     </section>
@@ -142,8 +125,8 @@
 
     <section>
         <div class="content-box">
-            <h2>Tap a Surprise 🎁</h2>
-            <div id="game-msg" style="font-weight: bold; color: var(--primary); min-height: 25px;">Choose an Emoji</div>
+            <h2>Pick a Gift 🎁</h2>
+            <div id="game-msg" style="font-weight: bold; color: var(--primary); min-height: 30px;">Choose an Emoji</div>
             <div class="emoji-grid">
                 <button class="emoji-btn" onclick="reveal('💍')">💍</button>
                 <button class="emoji-btn" onclick="reveal('🧁')">🧁</button>
@@ -159,57 +142,53 @@
 
     <script>
         const journey = [
-            {t:"Un Sirippu", d:"Un sirippu thaan en vazhkaiyoda brightness."},
-            {t:"Together", d:"Nee en kooda irukum pothu enakku bayame illa."},
-            {t:"Promise", d:"Un kooda kalyanam panni vazhanum nu aasai."},
-            {t:"Butterflies", d:"Innum unna pakumbothu first time pakura mathiri iruku."},
-            {t:"Long Calls", d:"Namma pesuna antha hours... en vazhkaiyoda best time."},
-            {t:"Home", d:"Un madi thaan enakkana oru safe place."},
-            {t:"The Love", d:"Un mela irukura anbu eppovumae kuraiyathu."},
-            {t:"Sweetness", d:"Chocolate-ah vida nee thaan enakku romba sweet."},
-            {t:"Memories", d:"Namma edutha ovvoru photo-vum oru azhagiya kavithai."},
-            {t:"Beach Walk", d:"Un kaiya pudichitu kadal oram nadakanum nu aasai."},
-            {t:"My Strength", d:"En kasta kaalathula koodave irundha un anbu."},
-            {t:"Late Nights", d:"Thookam varama namma pesuna antha silly vishayangal."},
-            {t:"First Meeting", d:"Antha nimidam thaan en vazhkaiya mathuna naal."},
-            {t:"Your Care", d:"En chinna chinna vishayathaiyum nee kavanippa."},
-            {t:"Our Song", d:"Intha paattu nammakaagave ezhuthunathu mathiri iruku."},
-            {t:"Sunshine", d:"En kaalai pozhuthu un ninaivugaludan thaan thodanguthu."},
-            {t:"Coffee Dates", d:"Namma sethu sapta antha coffee-oda vaasanai innum irukku."},
-            {t:"Small Fights", d:"Namma sandai pottuttu samathanam aagura azhage thani."},
-            {t:"Protector", d:"Nee enkooda irukkumbothu naanae thairiyama iruppen."},
-            {t:"Destiny", d:"Namma meet pannathu thaan en vazhkaiyoda best luck."},
-            {t:"Pure Soul", d:"Unnoda andha caring nature thaan enna korthathu."},
-            {t:"Laughter", d:"Enna eppovum sirikka vaikirathu unakku romba pidikkum."},
-            {t:"Trust", d:"Yaru illanalum nee eppovum enakku iruppa nu namburen."},
-            {t:"Dream House", d:"Unkooda sethu oru azhagiya veedu katti vaalanum."},
-            {t:"Support", d:"En dreams-ku nee thaan periya support."},
-            {t:"Your Eyes", d:"Un kannai paathale en kavalai ellam maranthudum."},
-            {t:"Happiness", d:"En vazhkaiyoda real meaning unna meet pannathu thaan."},
-            {t:"Special Gift", d:"Kadavul enakku koduthu periya gift nee thaan."},
-            {t:"My World", d:"Nee illatha oru ulagam enakku vendave venda."},
-            {t:"Forever", d:"Indha anbu eppovumae kuraiyaadhu. I Love You!"}
+            {e:"🥰", t:"Un Sirippu", d:"Un sirippu thaan en vazhkaiyoda brightness."},
+            {e:"🤝", t:"Together", d:"Nee en kooda irukum pothu enakku bayame illa."},
+            {e:"💍", t:"Promise", d:"Un kooda kalyanam panni vazhanum nu aasai."},
+            {e:"🦋", t:"Butterflies", d:"Innum unna pakumbothu first time pakura mathiri iruku."},
+            {e:"📞", t:"Long Calls", d:"Namma pesuna antha hours... en vazhkaiyoda best time."},
+            {e:"🏡", t:"Our Home", d:"Un madi thaan enakkana oru safe place."},
+            {e:"🌹", t:"The Love", d:"Un mela irukura anbu eppovumae kuraiyathu."},
+            {e:"🍫", t:"Sweetness", d:"Chocolate-ah vida nee thaan enakku romba sweet."},
+            {e:"📸", t:"Memories", d:"Namma edutha ovvoru photo-vum oru azhagiya kavithai."},
+            {e:"🌊", t:"Beach Walk", d:"Un kaiya pudichitu kadal oram nadakanum nu aasai."},
+            {e:"🦁", t:"Strong Me", d:"Nee pakkathula irundha naanae oru katti-singam thaan."},
+            {e:"🤫", t:"Secrets", d:"Namma matumae pesuna antha secret memories."},
+            {e:"🧸", t:"Chellakutty", d:"Unna thitti thitti konjurathu thaan enakku pidikkum."},
+            {e:"🎁", t:"Gift", d:"Kadavul enakku kodutha best gift nee thaan."},
+            {e:"🌈", t:"Colors", d:"En vazhkaiya vanna mayama mathunathu nee thaan."},
+            {e:"☕", t:"Coffee Date", d:"Udaney namma coffee sapda polama?"},
+            {e:"🛡️", t:"Safety", d:"Un thol mela saayum bodhu kidaikira amithi vera engum illa."},
+            {e:"⏳", t:"Time", d:"Un kooda irukura neram mattum podhave mattinguthu."},
+            {e:"🌙", t:"Dreams", d:"Every night un ninaivugaludan thaan thunguren."},
+            {e:"💎", t:"Diamond", d:"Nee enakkana oru vaira diamond."},
+            {e:"🎈", t:"Happiness", d:"En sandhosham unna suthithaan irukku."},
+            {e:"👣", t:"Steps", d:"Ovvoru adiyum unkooda vachathae perumai."},
+            {e:"🍪", t:"Cookie", d:"Sweetest person in my world!"},
+            {e:"☀️", t:"Sunshine", d:"En kaalai pozhudhu unna nenachi thaan thodangum."},
+            {e:"🌍", t:"My World", d:"En ulagam full-ah nee thaan."},
+            {e:"🍦", t:"Treat", d:"Namakkaana andha ice cream treat nyabagam irukka?"},
+            {e:"🌸", t:"Beautiful", d:"Un manasu intha poo madhiri romba azhagu."},
+            {e:"⭐", t:"Special", d:"En vazhkaiyoda shining star nee."},
+            {e:"🏰", t:"Queen", d:"En idhayathoda raani nee thaan."},
+            {e:"♾️", t:"Forever", d:"Indha anbu eppovumae kuraiyaadhu. I Love You!"}
         ];
 
         const container = document.getElementById('scroll-container');
         
-        // Auto-generate 30 pages using 1.jpg, 2.jpg...
         journey.forEach((item, i) => {
-            const photoNum = (i + 1); 
             container.innerHTML += `
                 <section>
                     <div class="content-box">
-                        <div class="photo-frame">
-                            <img src="${photoNum}.jpg" alt="Memory ${photoNum}" onerror="this.src='https://via.placeholder.com/300x400?text=Photo+Missing'">
-                        </div>
-                        <h2>${photoNum}. ${item.t}</h2>
+                        <span class="big-emoji">${item.e}</span>
+                        <h2>${i+1}. ${item.t}</h2>
                         <p>${item.d}</p>
                     </div>
                 </section>
             `;
         });
 
-        // Floating Hearts
+        // Background Hearts
         function createHeart() {
             const h = document.createElement('div');
             h.innerHTML = '❤️';
